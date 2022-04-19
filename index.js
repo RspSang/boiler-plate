@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { User } = require("./Model/User");
-require("dotenv").config();
+const config = require("./Config/key");
 
 const app = express();
 const port = 3000;
@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 const mongoose = require("mongoose");
 mongoose
-  .connect(process.env.DB_URI)
+  .connect(config.mongoURI)
   .then(() => console.log("MongoDB Connected!"))
   .catch((err) => console.log(err));
 
