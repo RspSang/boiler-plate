@@ -1,14 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
-import App from "./App";
-import "antd/dist/antd.css";
+import { QueryClient, QueryClientProvider } from "react-query";
+import App from "./components/App";
+import "./index.css";
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
+    </QueryClientProvider>
   </React.StrictMode>
 );

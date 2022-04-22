@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import Auth from "../../../hoc/Auth";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { USER_SERVER } from "../../Config";
 
 function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onEmailHandler = (event) => {
     setEmail(event.currentTarget.value);
@@ -22,7 +23,7 @@ function LoginPage() {
       password,
     };
     const response = await axios
-      .post("/api/users/login", body)
+      .post(`${USER_SERVER}/login`, body)
       .then((response) => response.data);
 
     if (response.loginSuccess) {

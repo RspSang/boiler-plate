@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Auth from "../../../hoc/Auth";
+import { USER_SERVER } from "../../Config";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -36,7 +37,7 @@ function RegisterPage() {
       password,
     };
     const response = await axios
-      .post("/api/users/register", body)
+      .post(`${USER_SERVER}/register`, body)
       .then((response) => response.data);
     console.log(response);
 
