@@ -39,7 +39,6 @@ function RegisterPage() {
     const response = await axios
       .post(`${USER_SERVER}/register`, body)
       .then((response) => response.data);
-    console.log(response);
 
     if (response.success) {
       navigate("/");

@@ -3,14 +3,13 @@ import axios from "axios";
 //SERVER ROUTES
 export const USER_SERVER = "/api/users";
 
-export function registerUser(dataToSubmit) {
-  const request = axios
+export async function registerUser(dataToSubmit) {
+  const request = await axios
     .post(`${USER_SERVER}/register`, dataToSubmit)
     .then((response) => response.data);
 
   return {
-    type: "register_user",
-    payload: request,
+    registerUser: request,
   };
 }
 
@@ -20,8 +19,7 @@ export async function loginUser(dataToSubmit) {
     .then((response) => response.data);
 
   return {
-    type: "login_user",
-    payload: request,
+    loginUser: request,
   };
 }
 
@@ -41,7 +39,6 @@ export function logoutUser() {
     .then((response) => response.data);
 
   return {
-    type: "logout_user",
-    payload: request,
+    logout_user: request,
   };
 }
